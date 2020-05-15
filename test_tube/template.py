@@ -1,6 +1,6 @@
 import re
 
-from test_tube.file import open_file
+#from test_tube.file import open_file
 
 class MyTemplate():
 
