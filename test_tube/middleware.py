@@ -3,7 +3,7 @@ import os
 
 from test_tube.tools import isalpha
 from test_tube.route import Static
-from test_tube.file  import open_img
+from test_tube.file  import open_img, open_css
 
 class MyMiddleware(object):
     
@@ -11,7 +11,6 @@ class MyMiddleware(object):
         self.app = app
 
     def __call__(self,env, start_response):
-        print("Middleware")
         file_path=env['PATH_INFO']
 
         file_target = re.match('/static/(?P<file_name>\D+)/', file_path)
@@ -37,7 +36,7 @@ class MyMiddleware(object):
                     try:
                         static = Static(200, 'text/css; charset=UTF-8')
                         start_response(static.status_code, static.headers)
-                        return open_img(os.path.join(os.path.abspath('.'), 'public/', file_name))
+                        return open_css(file_name)
 
                     except FileNotFoundError:
                         print('No such file or directory')

@@ -1,6 +1,7 @@
 import re
+import os
 
-#from test_tube.file import open_file
+from test_tube.tools import open_file
 
 class MyTemplate():
 
@@ -23,7 +24,6 @@ class MyTemplate():
         for num, line in enumerate(self.lines):
             value = re.search("{%\s?include\s(?P<value>.+?)\s?%}", line)
             if value is not None:
-                print(value)
                 self.handle_include(num, value.groupdict()['value'], _kws)
                 self.lines[num] = ''
 
@@ -87,7 +87,8 @@ class MyTemplate():
         self.__html[num] = ''
 
     def handle_include(self, num, value, _kws={}):
-        data = open_file(eval(value), ro='r').replace('\r\n', '\n').split('\n')
+        data = open_file(os.path.join(os.path.abspath('.'), 'templates'+eval(value)), ro='r')
+        data = data.replace('\r\n', '\n').split('\n')
         self.__html.extend(data)
 
     @property
