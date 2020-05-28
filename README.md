@@ -2,7 +2,8 @@
 
 ![header](reagent/tt_header.png)
 
-test-tube(試験管)はPython3用のminimum-WSGI-frameworkです。  
+test-tube is a minimal web framework.   
 
-自分のサイトを構築するために作成しています。  
-ついでに、静的コンテンツを配信するためのMiddlewareも作成しています。
+It consists of the minimum functions.   
+
+link : [test-tube](https://www.kosh.dev/test-tube)
