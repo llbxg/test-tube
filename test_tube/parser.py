@@ -53,9 +53,12 @@ class MyHTMLParser(HTMLParser):
         return ''.join(self.__html)
 
 def chek_url(url):
-    ok_url = ['github.com', 'kosh.dev', 'www.cript.me']
+    ok_url = ['github.com', 'kosh.dev', 'www.cript.me', 'twitter.com']
 
     if re.match('^\/', url) is not None:
+        return True
+    
+    elif re.match('mailto:hello@kosh.dev', url) is not None:
         return True
 
     elif re.match('^https?://', url) is not None:
