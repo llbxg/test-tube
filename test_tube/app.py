@@ -16,9 +16,9 @@ class App():
         self.__e404 =Route(None, None, partial(error_, 404), status=404)
         self.__e405 =Route(None, None, partial(error_, 405), status=405)
 
-    def registration(self, path, method, callback):
+    def registration(self, path, method, callback, content_type=None):
         new_path = '^/' + path + '$'
-        self.routes.append(Route(new_path, method, callback))
+        self.routes.append(Route(new_path, method, callback, content_type=content_type))
 
     def match(self, path, method):
         for route in self.routes:

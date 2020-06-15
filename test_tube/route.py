@@ -3,13 +3,16 @@ from http.client import responses
 
 class Route():
 
-    def __init__(self, path, method, callback, status=200, content_type='text/html; charset=UTF-8'):
+    def __init__(self, path, method, callback, status=200, content_type=None):
         self.path = path
         self.method = method
         self.callback = callback
 
         self.__status = status
+
+        if content_type is None: content_type = 'text/html; charset=UTF-8'
         self.__ct = content_type
+
         self.__header = Headers()
 
     @property
